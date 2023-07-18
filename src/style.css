@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Neue Machina";
+  font-weight: 300;
+  font-style: normal;
+  src: url("./assets/fonts/NeueMachina-Light.otf");
+  src: url("./assets/fonts/NeueMachina-Light.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/NeueMachina-Light.woff") format("woff"), url("./assets/fonts/NeueMachina-Light.ttf") format("truetype");
+  font-display: swap; 
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./assets/fonts/NeueMachina-Regular.otf");
+  src: url("./assets/fonts/NeueMachina-Regular.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/NeueMachina-Regular.woff") format("woff"), url("./assets/fonts/NeueMachina-Regular.ttf") format("truetype");
+  font-display: swap; 
+}
+
+
+@font-face {
+  font-family: "Neue Machina";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./assets/fonts/NeueMachina-Bold.otf");
+  src: url("./assets/fonts/NeueMachina-Bold.eot?#iefix") format("embedded-opentype"), url("./assets/fonts/NeueMachina-Bold.woff") format("woff"), url("./assets/fonts/NeueMachina-Bold.ttf") format("truetype");
+  font-display: swap; 
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Intro, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+}
+
+.fade-enter-active,
+.fade-leave-active {
+	transition-property: opacity;
+	transition-timing-function: ease;
+	transition-duration: 200ms;
+}
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
+}
+
+.scale-enter-active,
+.scale-leave-active {
+	transition-property: all;
+	transition-timing-function: ease-in-out;
+	transition-duration: 200ms;
+}
+.scale-enter-from,
+.scale-leave-to {
+	opacity: 0;
+	scale: 0.5;
+}
+
+.dialog-enter-active,
+.dialog-leave-active {
+	transition-property: opacity;
+	transition-timing-function: ease;
+	transition-duration: 200ms;
+}
+.dialog-enter-from,
+.dialog-leave-to {
+	opacity: 0;
+}
+.dialog-enter-active .inner,
+.dialog-leave-active .inner {
+	transition-property: all;
+	transition-timing-function: ease-in-out;
+	transition-duration: 150ms;
+}
+.dialog-enter-from .inner,
+.dialog-leave-to .inner {
+	opacity: 0;
+	scale: 0.5;
+}
