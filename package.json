@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@total-typescript/ts-reset": "^0.4.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "pinia": "^2.1.4",
+    "tailwind-merge": "^1.14.0",
     "vite-plugin-pages": "^0.31.0",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-i18n": "^9.2.2"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",
