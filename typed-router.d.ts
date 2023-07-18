@@ -40,7 +40,19 @@ import type {
 declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/[...slug]': RouteRecordInfo<'/[...slug]', '/:slug(.*)', { slug: ParamValue<true> }, { slug: ParamValue<false> }>,
+    '/dashboard': RouteRecordInfo<'/dashboard', '/dashboard', Record<never, never>, Record<never, never>>,
     '/dashboard/': RouteRecordInfo<'/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
+    '/dashboard/calendar': RouteRecordInfo<'/dashboard/calendar', '/dashboard/calendar', Record<never, never>, Record<never, never>>,
+    '/dashboard/earning': RouteRecordInfo<'/dashboard/earning', '/dashboard/earning', Record<never, never>, Record<never, never>>,
+    '/dashboard/faq': RouteRecordInfo<'/dashboard/faq', '/dashboard/faq', Record<never, never>, Record<never, never>>,
+    '/dashboard/help': RouteRecordInfo<'/dashboard/help', '/dashboard/help', Record<never, never>, Record<never, never>>,
+    '/dashboard/membership': RouteRecordInfo<'/dashboard/membership', '/dashboard/membership', Record<never, never>, Record<never, never>>,
+    '/dashboard/offers': RouteRecordInfo<'/dashboard/offers', '/dashboard/offers', Record<never, never>, Record<never, never>>,
+    '/dashboard/referrals': RouteRecordInfo<'/dashboard/referrals', '/dashboard/referrals', Record<never, never>, Record<never, never>>,
+    '/dashboard/settings': RouteRecordInfo<'/dashboard/settings', '/dashboard/settings', Record<never, never>, Record<never, never>>,
+    '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
+    '/registration': RouteRecordInfo<'/registration', '/registration', Record<never, never>, Record<never, never>>,
   }
 }
 

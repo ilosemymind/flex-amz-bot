@@ -1,1 +1,3 @@
-<template>Dashboard page</template>
+<template>
+	<div>Dashboard view</div>
+</template>
