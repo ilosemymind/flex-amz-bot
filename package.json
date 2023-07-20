@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "@total-typescript/ts-reset": "^0.4.2",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "embla-carousel-vue": "^8.0.0-rc11",
+    "lottie-web": "^5.12.2",
     "pinia": "^2.1.4",
     "tailwind-merge": "^1.14.0",
     "vite-plugin-pages": "^0.31.0",
     "vue": "^3.3.4",
-    "vue-i18n": "^9.2.2"
+    "vue-i18n": "^9.3.0-beta.22"
   },
   "devDependencies": {
     "@types/node": "^20.4.2",

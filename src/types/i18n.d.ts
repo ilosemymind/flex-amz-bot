@@ -2,11 +2,11 @@ import {
   DefineLocaleMessage,
   DefineDateTimeFormat,
   DefineNumberFormat
-} from 'vue-i18n'
+} from 'vue-i18n';
 
 import {
 	MessageSchema
-} from '@/plugins/i18n'
+} from '@/plugins/i18n';
 
 declare module 'vue-i18n' {
   export interface DefineLocaleMessage extends MessageSchema {}

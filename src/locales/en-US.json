@@ -1,11 +1,15 @@
 {
-	"nav": {
-		"account": "Account details",
-		"orders": "My orders",
-		"wishlist": "Wishlist",
-		"addresses": "Addresses",
-		"gift-cards": "My gift cards",
-		"password": "Change password",
-		"logout": "Logout"
+	"dashboard": {
+		"nav": {
+			"index": "Dashboard",
+			"calendar": "Calendar",
+			"offers": "Offers",
+			"membership": "Membership",
+			"earnings": "Earnings",
+			"referrals": "Referrals",
+			"settings": "Settings",
+			"faq": "F.A.Q.",
+			"help": "Help"
+		}
 	}
 }
