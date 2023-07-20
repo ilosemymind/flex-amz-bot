@@ -11,11 +11,11 @@
 		
 		<RouterView v-slot="{ Component, route }">
 			<Transition name="fade" appear mode="out-in">
-				<component :is="Component" :key="route.fullPath"/>
+				<KeepAlive :include="keepAliveViews">
+					<component :is="Component" :key="route.fullPath"/>
+				</KeepAlive>
 			</Transition>
 		</RouterView>
-
-		
 	</MainLayout>
 </template>
 
@@ -24,4 +24,6 @@ import { RouterView } from 'vue-router';
 
 import MainLayout from '@/components/layouts/MainLayout.vue';
 import NavList from '@/components/dashboard/nav/NavList.vue';
+
+const keepAliveViews = "index,settings";
 </script>
