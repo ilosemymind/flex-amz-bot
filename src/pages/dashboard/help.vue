@@ -2,7 +2,6 @@
 	<div class="w-full flex flex-col items-center">
 		<ViewHeader>Help</ViewHeader>
 
-
 		<p class="w-3/4 my-auto text-center text-white">
 			We're here to help you, so please don't hesitate to reach out if you have any questions or need assistance. Our goal is to provide you with the best possible service. 
 			<br/>

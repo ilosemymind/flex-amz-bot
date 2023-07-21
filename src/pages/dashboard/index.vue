@@ -1,7 +1,6 @@
 <template>
-	<div class="w-full flex">
-		<span>Dashboard view</span>
-		<input/>	
+	<div class="w-full flex flex-col">
+		<ViewHeader>Dashboard</ViewHeader>
 
 		<TabsContainer value="accepted">
 			<TabsList>
@@ -19,4 +18,5 @@
 
 <script setup lang="ts">
 import { TabsContainer, TabsList, TabTrigger, TabContent } from '@/components/ui/tabs';
+import ViewHeader from '@/components/dashboard/ViewHeader.vue';
 </script>

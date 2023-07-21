@@ -3,7 +3,7 @@
 		v-if="selected"
 		v-bind="excludeAttrs($attrs, ['class', 'role', 'tabindex'])"
 		:class="cn(`
-			text-white
+			w-full text-white
 		`, $attrs.class as string)"
 		role="tabpanel"
 		:tabindex="0"
@@ -14,16 +14,17 @@
 
 <script setup lang="ts">
 import { cn, excludeAttrs } from '@/components/utils';
-import { Ref, computed, inject } from 'vue';
+import { computed, inject } from 'vue';
+import { TABS_INJECTION_KEY, TabsProvideValue } from './TabsContainer.vue';
 
 const props = defineProps({
 	value: { type: String, required: true }
 });
 
-const selectedTab = inject('selectedTab') as Ref<string>;
+const injectedValue = inject(TABS_INJECTION_KEY) as TabsProvideValue;
 
 const selected = computed(() => {
-	return selectedTab.value === props.value;
+	return injectedValue.value.value === props.value;
 });
 </script>
 

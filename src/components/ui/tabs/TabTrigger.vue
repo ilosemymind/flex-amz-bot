@@ -12,21 +12,25 @@
 
 <script setup lang="ts">
 import { cn, excludeAttrs } from '@/components/utils';
-import { Ref, computed, inject } from 'vue';
+import { computed, inject } from 'vue';
+import { TABS_INJECTION_KEY, TabsProvideValue } from './TabsContainer.vue';
 
 const props = defineProps({
 	value: { type: String, required: true }
 });
 
-const selectedTab = inject('selectedTab') as Ref<string>;
-const selectTab = inject('selectTab') as (tab: string) => void;
+const injectedValue = inject(TABS_INJECTION_KEY) as TabsProvideValue;
 
 const selected = computed(() => {
-	return selectedTab.value === props.value;
+	return injectedValue.value.value === props.value;
 });
 
+const selectTab = (value: string) => {
+	injectedValue.changeValue(value);
+}
+
 const classList = computed(() => {
-	let result = "text-white hover:text-pink-400 transition-colors ";
+	let result = "w-full text-white hover:text-pink-400 transition-colors ";
 
 	if(selected.value) {
 		result += "text-pink-400" 
