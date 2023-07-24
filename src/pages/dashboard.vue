@@ -8,7 +8,8 @@
 					alt="Logo"
 				/>
 			</RouterLink>
-			<nav class="flex">
+			
+			<nav class="h-full flex">
 				<NavList/>
 				<Separator class="mx-6" orientation="vertical"/>
 			</nav>

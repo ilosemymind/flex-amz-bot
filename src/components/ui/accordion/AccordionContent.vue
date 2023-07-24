@@ -1,9 +1,9 @@
 <template>
 	<div 
-		:data-open="injectedItemValue.isOpen.value"
+		:aria-hidden="!injectedItemValue.isOpen.value"
 		class="
-			grid grid-rows-[0fr] transition-[grid-template-rows,margin] duration-300
-			data-[open=true]:grid-rows-[1fr] data-[open=true]:mt-2
+			grid grid-rows-[1fr] mt-2 transition-[grid-template-rows,margin] duration-300
+			aria-[hidden=true]:grid-rows-[0fr] aria-[hidden=true]:mt-0
 		"
 	>
 		<div class="overflow-hidden">

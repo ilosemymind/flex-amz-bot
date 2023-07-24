@@ -12,7 +12,8 @@
 			name="plus" 
 			class="
 				min-w-[24px] min-h-[24px] ml-auto text-sky-200 transition-[inherit]
-				group-data-[open=true]:rotate-45 group-data-[open=true]:text-pink-400"
+				group-data-[open=true]:rotate-45 group-data-[open=true]:text-pink-400
+			"
 		/>
 	</button>
 </template>

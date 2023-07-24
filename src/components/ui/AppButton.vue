@@ -35,8 +35,8 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: `
-					min-w-[162px] px-7 py-3 text-white bg-black border border-black rounded-sm 
-					hover:bg-transparent hover:text-black disabled:bg-gray-300 disabled:text-gray-500
+					min-w-[162px] px-7 py-3 text-white bg-blue-600 borde rounded-lg
+					hover:bg-transparent disabled:opacity-60
 				`,
 				ghost: `
 					relative p-1 text-lavender-500 bg-transparent
