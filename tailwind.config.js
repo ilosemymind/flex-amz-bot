@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: [
@@ -7,7 +9,7 @@ export default {
   theme: {
     extend: {
 			fontFamily: {
-        'neue-machina': ["Neue Machina", "sans-serif"]
+        'neue-machina': ['Neue Machina', ...defaultTheme.fontFamily.sans]
       },
 			colors: {
 				blue: {
@@ -16,6 +18,9 @@ export default {
 				},
 				pink: {
 					400: 'rgb(246, 90, 255)'
+				},
+				gray: {
+					850: 'rgb(39, 39, 39)'
 				},
 				sky: {
 					200: 'rgb(104, 225, 251)'

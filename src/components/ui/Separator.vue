@@ -19,7 +19,7 @@ const props = defineProps({
 const { orientation } = toRefs(props);
 
 const classList = computed(() => {
-	let result = "shrink-0 bg-black ";
+	let result = "shrink-0 bg-gray-800 ";
 
 	if(orientation.value === "horizontal") {
 		result += "h-[1px] w-full" 

@@ -27,8 +27,11 @@
 @tailwind utilities;
 
 @layer base {
+	* {
+		font-family: Neue Machina, system-ui, sans-serif;
+	}
+
   html {
-    font-family: Neue Machina, system-ui, sans-serif;
 		background: linear-gradient(95deg, #1E1B5F, #371E53);
   }
 
@@ -115,24 +118,33 @@
 	scale: 0.5;
 }
 
-.dialog-enter-active,
-.dialog-leave-active {
+.collapse-enter-active,
+.collapse-leave-active {
 	transition-property: opacity;
 	transition-timing-function: ease;
 	transition-duration: 200ms;
 }
-.dialog-enter-from,
-.dialog-leave-to {
+.collapse-enter-from,
+.collapse-leave-to {
 	opacity: 0;
 }
-.dialog-enter-active .inner,
-.dialog-leave-active .inner {
+.collapse-enter-active .inner,
+.collapse-leave-active .inner {
 	transition-property: all;
 	transition-timing-function: ease-in-out;
 	transition-duration: 150ms;
 }
-.dialog-enter-from .inner,
-.dialog-leave-to .inner {
+.collapse-enter-from .inner,
+.collapse-leave-to .inner {
 	opacity: 0;
 	scale: 0.5;
+}
+
+
+.ps__rail-y {
+	background: red;
+}
+
+.thumb-y {
+	background: blue;
 }

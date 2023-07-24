@@ -10,7 +10,7 @@
 			</RouterLink>
 			<nav class="flex">
 				<NavList/>
-				<Separator class="mx-6 bg-gray-800" orientation="vertical"/>
+				<Separator class="mx-6" orientation="vertical"/>
 			</nav>
 		</div>
 		
@@ -23,7 +23,10 @@
 		</RouterView>
 
 		<div class="h-[60px] flex items-center">
-			<button class="font-bold text-xl text-white">
+			<button 
+				class="font-bold text-xl text-white hover:text-pink-400 transition-colors"
+				@click="authService.logout()"
+			>
 				Logout
 			</button>
 		</div>
@@ -32,6 +35,7 @@
 
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router';
+import authService from '@/services/auth.service';
 
 import MainLayout from '@/components/layouts/MainLayout.vue';
 import NavList from '@/components/dashboard/nav/NavList.vue';

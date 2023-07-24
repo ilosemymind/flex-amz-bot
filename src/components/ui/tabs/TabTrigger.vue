@@ -3,7 +3,10 @@
 		v-bind="excludeAttrs($attrs, ['class', 'role', 'tabindex'])"
 		role="tab"
 		:tabindex="selected ? 0 : -1"
-		:class="cn(classList, $attrs.class as string)"
+		:data-selected="selected"
+		:class="cn(`
+			w-full p-2 text-white hover:text-pink-400 transition-colors data-[selected=true]:text-pink-400
+		`, $attrs.class as string)"
 		@click="selectTab(value)"
 	>
 		<slot></slot>
@@ -28,16 +31,6 @@ const selected = computed(() => {
 const selectTab = (value: string) => {
 	injectedValue.changeValue(value);
 }
-
-const classList = computed(() => {
-	let result = "w-full text-white hover:text-pink-400 transition-colors ";
-
-	if(selected.value) {
-		result += "text-pink-400" 
-	}
-
-	return result;
-});
 </script>
 
 <script lang="ts">
