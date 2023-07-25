@@ -35,13 +35,13 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: `
-					min-w-[162px] px-7 py-3 text-white bg-blue-600 borde rounded-lg
+					min-w-[162px] px-7 py-3 text-white bg-blue-600 border border-blue-600 rounded-lg
 					hover:bg-transparent disabled:opacity-60
 				`,
 				ghost: `
-					relative p-1 text-lavender-500 bg-transparent
-					before:content-[''] before:absolute before:bottom-[-1px] before:top-[auto] before:left-0 before:right-[100%] before:h-[1px] before:bg-[currentColor] before:transition-all before:duration-300
-					hover:before:right-0 disabled:text-gray-400
+					relative p-1 text-lavender-500 bg-transparent text-white
+					before:content-[''] before:absolute before:bottom-[-1px] before:top-[auto] before:left-0 before:right-[100%] before:h-[1px] before:bg-[currentColor] before:transition-color before:duration-150
+					hover:text-pink-400 hover:before:right-0 disabled:text-gray-400
 				`
 			}
 		}

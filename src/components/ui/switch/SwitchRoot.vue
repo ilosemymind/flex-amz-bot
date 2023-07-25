@@ -14,7 +14,7 @@
 			v-bind="modelValue"
 			type="checkbox"
 			:id="props.id"
-			class="w-full h-full absolute inset-0 opacity-0"
+			class="w-full h-full absolute inset-0 opacity-0 cursor-pointer"
 			:name="props.name"
 			aria-hidden="true"
 			:disabled="props.disabled"

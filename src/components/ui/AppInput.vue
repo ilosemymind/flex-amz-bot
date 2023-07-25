@@ -1,16 +1,15 @@
 <template>
 	<div
 		:class="cn(`
-			relative flex items-center gap-2 text-sm border-b border-black cursor-text
-			before:content-[''] before:absolute before:bottom-[-1px] before:top-[auto] before:left-0 before:right-[100%] before:h-[2px] before:bg-black before:transition-all before:duration-300
-			[&:has(input:focus)]:before:right-0 disabled:opacity-70
+			relative w-full flex items-center gap-2 px-5 py-2 text-sm bg-white border border-black rounded-xl cursor-text
+			disabled:opacity-50
 		`, $attrs.class as string)" 
 	>
 		<slot name="prepend"></slot>
 		<input 
 			v-model="modelValue"
 			v-bind="excludeAttrs($attrs, ['class'])"
-			class="w-full py-2 bg-transparent outline-none cursor-[inherit]"
+			class="w-full py-2 text-black bg-transparent outline-none cursor-[inherit] placeholder:text-gray-400"
 		/>
 		<slot name="append"></slot>
 	</div>

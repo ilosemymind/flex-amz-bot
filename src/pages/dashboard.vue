@@ -24,12 +24,13 @@
 		</RouterView>
 
 		<div class="h-[60px] flex items-center">
-			<button 
-				class="font-bold text-xl text-white hover:text-pink-400 transition-colors"
+			<AppButton
+				class="font-bold text-xl" 
+				variant="ghost"
 				@click="authService.logout()"
 			>
 				Logout
-			</button>
+			</AppButton>
 		</div>
 	</MainLayout>
 </template>
@@ -41,6 +42,7 @@ import authService from '@/services/auth.service';
 import MainLayout from '@/components/layouts/MainLayout.vue';
 import NavList from '@/components/dashboard/nav/NavList.vue';
 import Separator from '@/components/ui/Separator.vue';
+import AppButton from '@/components/ui/AppButton.vue';
 
 const keepAliveViews = "index,settings";
 </script>

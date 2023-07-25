@@ -52,7 +52,7 @@ declare module 'vue-router/auto/routes' {
     '/dashboard/referrals': RouteRecordInfo<'/dashboard/referrals', '/dashboard/referrals', Record<never, never>, Record<never, never>>,
     '/dashboard/settings': RouteRecordInfo<'/dashboard/settings', '/dashboard/settings', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
-    '/registration': RouteRecordInfo<'/registration', '/registration', Record<never, never>, Record<never, never>>,
+    '/signup': RouteRecordInfo<'/signup', '/signup', Record<never, never>, Record<never, never>>,
   }
 }
 
