@@ -4,6 +4,10 @@
 			<span>{{ t('dashboard.nav.index') }}</span>
 			<SvgIcon name="dashboard" />
 		</NavItem>
+		<NavItem to="/dashboard/filters">
+			<span>{{ t('dashboard.nav.filters') }}</span>
+			<SvgIcon name="funnel" />
+		</NavItem>
 		<NavItem to="/dashboard/calendar">
 			<span>{{ t('dashboard.nav.calendar') }}</span>
 			<SvgIcon name="calendar" />

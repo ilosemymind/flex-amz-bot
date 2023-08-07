@@ -2,6 +2,7 @@
 	"dashboard": {
 		"nav": {
 			"index": "Dashboard",
+			"filters": "Filters",
 			"calendar": "Calendar",
 			"offers": "Offers",
 			"membership": "Membership",

@@ -1,5 +1,5 @@
 <template>
-	<MainLayout class="flex">
+	<MainLayout class="relative flex">
 		<div class="flex flex-col gap-4"> 
 			<RouterLink to="/">
 				<img 
@@ -27,22 +27,39 @@
 			<AppButton
 				class="font-bold text-xl" 
 				variant="ghost"
-				@click="authService.logout()"
+				@click="handleLogout()"
 			>
 				Logout
 			</AppButton>
+
+			<Sheet>
+				<SheetTrigger>
+					<AppButton>Open</AppButton>
+				</SheetTrigger>
+
+				<SheetContent>
+					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, et.
+					<SheetTrigger>
+						<AppButton>Close</AppButton>
+					</SheetTrigger>
+				</SheetContent>
+			</Sheet>
 		</div>
 	</MainLayout>
 </template>
 
 <script setup lang="ts">
 import { RouterView, RouterLink } from 'vue-router';
-import authService from '@/services/auth.service';
 
 import MainLayout from '@/components/layouts/MainLayout.vue';
 import NavList from '@/components/dashboard/nav/NavList.vue';
 import Separator from '@/components/ui/Separator.vue';
 import AppButton from '@/components/ui/AppButton.vue';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const keepAliveViews = "index,settings";
+
+const handleLogout = () => {
+	
+}
 </script>
