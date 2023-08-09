@@ -3,17 +3,16 @@
 		class="
 			absolute top-0 right-0 w-full sm:w-[284px] h-full translate-x-0 opacity-100 rounded-2xl overflow-hidden
 			aria-[hidden=true]:opacity-0 aria-[hidden=true]:pointer-events-none aria-[hidden=true]:translate-x-full
-			transition-[opacity,transform] duration-500
+			transition-[opacity,transform] duration-500 z-0
 		"
 		:aria-hidden="!injectedValue.isOpen.value"
 	>
 		<div 
 			v-bind="excludeAttrs($attrs, ['class'])"
 			:class="cn(`
-				w-full h-full relative bg-glass bg-inherit
+				w-full h-full flex flex-col justify-center items-center bg-glass
 			`, $attrs.class as string)"
 		>
-			{{ injectedValue.isOpen }}
 			<slot></slot>
 		</div>
 	</div>

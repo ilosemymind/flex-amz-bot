@@ -82,6 +82,7 @@
 					<div class="embla__slide">Slide 3</div>
 				</div>
 			</div>
+			
 			<button @click="emblaApi?.scrollPrev">&lt;</button>
 			<button @click="emblaApi?.scrollNext">></button>
 		</main>

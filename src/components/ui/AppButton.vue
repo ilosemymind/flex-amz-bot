@@ -4,7 +4,8 @@
 		:is="element"
 		:class="cn(buttonVariants({
 			className: $attrs.class as string,
-			variant
+			variant,
+			size
 		}))" 
 		:type="$attrs.href ? 'text/html' : 'button'"
 	>
@@ -25,7 +26,8 @@ const element = computed(() => {
 
 
 defineProps({
-	variant: { type: String as PropType<Variant>, default: 'default' }
+	variant: { type: String as PropType<Variant>, default: 'default' },
+	size: { type: String as PropType<Size>, default: 'md' }
 });
 
 const buttonVariants = cva(
@@ -35,7 +37,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default: `
-					min-w-[162px] px-7 py-3 text-white bg-blue-600 border border-blue-600 rounded-lg
+					 text-white bg-blue-600 border border-blue-600 rounded-lg
 					hover:bg-transparent disabled:opacity-60
 				`,
 				ghost: `
@@ -43,12 +45,21 @@ const buttonVariants = cva(
 					before:content-[''] before:absolute before:bottom-[-1px] before:top-[auto] before:left-0 before:right-[100%] before:h-[1px] before:bg-[currentColor] before:transition-color before:duration-150
 					hover:text-pink-400 hover:before:right-0 disabled:text-gray-400
 				`
+			},
+			size: {
+				sm: `
+					px-4 py-2
+				`,
+				md: `
+					min-w-[162px] px-7 py-3
+				`,
 			}
 		}
 	}
 );
 
 type Variant = VariantProps<typeof buttonVariants>["variant"];
+type Size = VariantProps<typeof buttonVariants>["size"];
 </script>
 
 <script lang="ts">

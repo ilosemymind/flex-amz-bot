@@ -1,7 +1,6 @@
 import profileService from '@/services/profile.service';
 import { useProfileStore } from '@/stores/profile';
 import { createRouter, createWebHistory } from 'vue-router/auto';
-import Cookies from "js-cookie";
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -10,16 +9,17 @@ export const router = createRouter({
 const openRoutes = [ "/signup", "/login" ];
 
 router.beforeEach(async (from, _, next) => {
-	const accessToken = Cookies.get('accessToken');
 	const profileStore = useProfileStore();
 	const isProtectedRoute = (openRoutes.filter(route => 
 		from.path.startsWith(route) || from.path === "/").length === 0);
 
-	if(accessToken) {
-		const userProfile = await profileService.getProfile();
-		console.log(userProfile);
+	const userProfile = await profileService.getProfile();
+	console.log(userProfile, 'userProfile')
 
-		if(userProfile) profileStore.setValue(userProfile);
+	if(userProfile) {
+		profileStore.setValue(userProfile);
+	} else {
+		profileStore.reset();
 	}
 
 	if(profileStore.state) {
@@ -28,10 +28,13 @@ router.beforeEach(async (from, _, next) => {
 			&& !from.path.startsWith("/connections")
 		) {
 			next({ path: "/connections" });
+			return;
 		}
 	} else {
 		if(isProtectedRoute) {
+			console.log(profileStore.state)
 			next({ path: "/login" });
+			return;
 		}
 	}
 

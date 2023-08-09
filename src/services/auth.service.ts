@@ -25,10 +25,19 @@ export default {
 			}
 		});
 
-		console.log(data);
+		if(data.accessToken) Cookies.set('accessToken', data.accessToken, { 
+			secure: true, 
+			sameSite: 'strict',
+			path: '/',
+			expires: 1 / 96 // 15 min
+		});
 
-		if(data.accessToken) Cookies.set('accessToken', data.accessToken);
-		if(data.refreshToken) Cookies.set('refreshToken', data.refreshToken);
+		if(data.refreshToken) Cookies.set('refreshToken', data.refreshToken, { 
+			secure: true, 
+			sameSite: 'strict',
+			path: '/',
+			expires: 7 // 7 days
+		});
 	},
 
 	login: async (payload: LoginPayload) => {
@@ -41,11 +50,24 @@ export default {
 			}
 		});
 
-		if(data.accessToken) Cookies.set('accessToken', data.accessToken);
-		if(data.refreshToken) Cookies.set('refreshToken', data.refreshToken);
+		if(data.accessToken) Cookies.set('accessToken', data.accessToken, { 
+			secure: true, 
+			sameSite: 'strict',
+			path: '/',
+			expires: 1 / 96 // 15 min
+		});
+		
+		if(data.refreshToken) Cookies.set('refreshToken', data.refreshToken, { 
+			secure: true, 
+			sameSite: 'strict',
+			path: '/',
+			expires: 7 // 7 days
+		});
 	},
 
-	refreshToken: async (payload: { [key: string]: unknown } = {}) => {
+	refreshToken: async (payload: { refreshToken: string }) => {
+		console.log(payload.refreshToken, 'payload.refreshToken');
+
 		const { data } = await axiosInstance.post(`/refresh`, {
 			refreshToken: payload.refreshToken
 		}, {
@@ -54,10 +76,17 @@ export default {
 			}
 		});
 
+		console.log(data, 'refresh token data');
+
 		return data;
 	},
 
 	resetPassword: (payload = {}) => {
 		console.log('reset password', payload);
+	},
+
+	logout() {
+		Cookies.remove('accessToken');
+		Cookies.remove('refreshToken');
 	}
 }

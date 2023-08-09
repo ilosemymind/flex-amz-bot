@@ -1,7 +1,7 @@
 <template>
 	<div 
 		:class="cn(`
-			sm:w-3/4 sm:max-w-[75%] sm:h-[755px] sm:max-h-[inherit] m-6 p-9 text-white
+			sm:w-3/4 sm:max-w-[75%] sm:h-[755px] sm:max-h-[inherit] m-6 py-6 px-9 text-white
 			bg-gray-900 border-8 border-blue-600 rounded-[30px] overflow-hidden`, 
 			$attrs.class as string
 		)" 

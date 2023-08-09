@@ -2,7 +2,7 @@
 	<MainLayout class="flex justify-between">
 		<RouterLink class="w-1/5 h-[60px]" to="/">
 			<img 
-				src="../assets/images/logo.png" 
+				:src="logoImg" 
 				class="w-[194px]" 
 				alt="Logo"
 			/>
@@ -129,6 +129,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router/auto';
 import { computed, reactive, ref } from 'vue';
+import logoImg from "@/assets/images/logo.png";
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength, sameAs } from '@vuelidate/validators';
 import { vMaska, MaskaDetail } from "maska";

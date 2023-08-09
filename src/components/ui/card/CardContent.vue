@@ -1,8 +1,7 @@
 <template>
 	<div
-		v-bind="excludeAttrs($attrs, ['class', 'role'])"
-		role="tablist"
-		:class="cn('flex', $attrs.class as string)"
+		v-bind="excludeAttrs($attrs, ['class'])"
+		:class="cn(`w-full`, $attrs.class as string)" 
 	>
 		<slot></slot>
 	</div>

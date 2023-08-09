@@ -1,6 +1,6 @@
 <template>
 	<div 
-		v-if="selected"
+		v-show="selected"
 		v-bind="excludeAttrs($attrs, ['class', 'role', 'tabindex'])"
 		:class="cn(`
 			w-full text-white

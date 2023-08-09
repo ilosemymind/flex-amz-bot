@@ -2,12 +2,8 @@
 	<div class="w-full flex flex-col">
 		<ViewHeader>Referrals</ViewHeader>
 
-		<div class="w-full flex flex-1 justify-center items-center">
-			<div 
-				class="
-					w-3/4 flex flex-col items-center gap-12 p-7 text-white bg-gray-850 
-					border border-blue-600 rounded-2xl"
-			>
+		<section class="w-full flex flex-1 justify-center items-center">
+			<Card class="w-3/4 flex-col gap-12 p-7">
 				<div class="flex flex-col items-center gap-5 cursor-default">
 					<span>
 						REFER FRIENDS 
@@ -38,8 +34,8 @@
 					<span>Share link</span>
 					<SvgIcon name="share"/>
 				</AppButton>
-			</div>
-		</div>
+			</Card>
+		</section>
 	</div>
 </template>
 
@@ -47,6 +43,7 @@
 import ViewHeader from '@/components/dashboard/ViewHeader.vue';
 import AppButton from '@/components/ui/AppButton.vue';
 import SvgIcon from '@/components/ui/SvgIcon.vue';
+import { Card } from '@/components/ui/card';
 
 
 </script>

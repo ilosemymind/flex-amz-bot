@@ -42,24 +42,29 @@
 }
 
 @layer utilities {
-	.bg-glass {
-		background-image: url("Frosted Glass effect in CSS/assets/background.png");
+	/* .bg-glass {
+		background-image: url("./assets/images/glassmorphism.png");
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
+	} */
+
+	.bg-glass {
+		position: relative;
 	}
 
-	.bg-glass::before {
+	.bg-glass::after {
+		content: "";
 		position: absolute;
-		content: '';
-		background: inherit;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		box-shadow: inset 0 0 0 3000px rgba(150, 150, 150, 0.192);
-		filter: blur(10px);
-		border-radius: 15px;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+		z-index: -1;
 	}
 
 	.no-scrollbar::-webkit-scrollbar {

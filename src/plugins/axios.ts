@@ -50,7 +50,6 @@ function onResponseFilled(response: AxiosResponse) {
 		response.headers["content-type"] === "application/json"
 	) {
 		response.data = camelizeKeys(response.data);
-		console.log(response.data, 'after keys camelized')
 	}
 
 	return response;
@@ -60,11 +59,14 @@ async function onResponseRejected(error: AxiosError) {
   const originalRequest = error?.config; 
   const statusCode = error?.response?.status; 
 
+	console.log(statusCode);
+
 	if(originalRequest) {
 		// @ts-ignore
 		if (statusCode === 401 && !originalRequest._retry) {
 			// @ts-ignore
 			originalRequest._retry = true;
+			Cookies.remove('accessToken');
 
 			try {
 				const refreshToken = Cookies.get('refreshToken');
@@ -73,19 +75,26 @@ async function onResponseRejected(error: AxiosError) {
 					const response: { accessToken: string } = 
 						await authService.refreshToken({ refreshToken: refreshToken });
 
-					Cookies.set('accessToken', response.accessToken);
+					Cookies.set('accessToken', response.accessToken, { 
+						secure: true, 
+						sameSite: 'strict',
+						path: '/',
+						expires: 1 / 96 // 15 min
+					});
 					// @ts-ignore
 					originalRequest.sent = true;
 					originalRequest.headers['Authorization'] = `Bearer ${response.accessToken}`;
 				} else {
-					window.location.href = "/login";
+					// window.location.href = "/login";
+				console.log('refresh token not found');
 				}
 			} catch(error) {
-				window.location.href = "/login";
+				Cookies.remove('refreshToken');
+				console.log('error during token refreshing');
+				// window.location.href = "/login";
 			}
 
 			if (formDataCache) {
-				console.log(formDataCache, 'form data cache')
 				originalRequest.data = formDataCache;
 				formDataCache = undefined;
 			}

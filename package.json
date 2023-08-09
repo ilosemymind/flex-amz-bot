@@ -17,6 +17,7 @@
     "chart.js": "^4.3.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "dayjs": "^1.11.9",
     "embla-carousel-vue": "^8.0.0-rc11",
     "humps": "^2.0.1",
     "js-cookie": "^3.0.5",

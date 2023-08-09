@@ -2,7 +2,7 @@
 	<MainLayout class="flex justify-between">
 		<RouterLink class="w-1/5 h-[60px]" to="/">
 			<img 
-				src="../assets/images/logo.png" 
+				:src="logoImg" 
 				class="w-[194px]" 
 				alt="Logo"
 			/>
@@ -90,8 +90,9 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router/auto';
 import { reactive, ref } from 'vue';
+import { RouterLink } from 'vue-router/auto';
+import logoImg from "@/assets/images/logo.png";
 import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength } from '@vuelidate/validators';
 import authService from '@/services/auth.service';

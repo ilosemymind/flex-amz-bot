@@ -1,5 +1,5 @@
 <template>
-	<MainLayout class="relative flex gap-4">
+	<MainLayout class="relative grid grid-cols-2 gap-4">
 		<section class="w-full flex flex-col gap-6">
 			<label class="font-semibold text-xl">Telegram Connection</label>
 			<div v-if="!profileStore.state?.telegramId" class="flex flex-col gap-6">
@@ -61,6 +61,17 @@
 				<SvgIcon class="text-pink-400" name="check"/>
 				<p>Amazon account is already connected.</p>
 			</div>
+		</section>
+
+		<section 
+			v-if="profileStore.state?.telegramId && profileStore.state?.isAmazonConnected" 
+			class="col-span-2 mx-auto"
+		>
+			<RouterLink to="/dashboard">
+				<AppButton class="w-[300px]">
+					Go to Dashboard
+				</AppButton>
+			</RouterLink>
 		</section>
 	</MainLayout>
 </template>

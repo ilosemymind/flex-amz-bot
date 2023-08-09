@@ -71,5 +71,10 @@
 
 <script setup lang="ts">
 import ViewHeader from '@/components/dashboard/ViewHeader.vue';
-import { AccordionContainer, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { 
+	AccordionContainer, 
+	AccordionContent, 
+	AccordionItem, 
+	AccordionTrigger 
+} from '@/components/ui/accordion';
 </script>
