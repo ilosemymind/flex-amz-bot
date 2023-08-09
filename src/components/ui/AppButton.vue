@@ -47,12 +47,8 @@ const buttonVariants = cva(
 				`
 			},
 			size: {
-				sm: `
-					px-4 py-2
-				`,
-				md: `
-					min-w-[162px] px-7 py-3
-				`,
+				sm: `px-4 py-2`,
+				md: `min-w-[162px] px-7 py-3`,
 			}
 		}
 	}
