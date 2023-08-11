@@ -117,6 +117,7 @@
 				<AppButton
 					class="font-bold text-xl" 
 					variant="ghost"
+					size="sm"
 					@click=""
 				>
 					Exit

@@ -45,12 +45,12 @@
 
 			<Separator/>
 
-			<!-- <div class="flex justify-between items-center">
+			<div class="flex justify-between items-center">
 				<span>SMS Notifications</span>
 				<SwitchRoot v-model="settings.sms">
 					<SwitchThumb/>
 				</SwitchRoot>
-			</div> -->
+			</div>
 
 			<Separator/>
 

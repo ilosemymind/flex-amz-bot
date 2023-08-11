@@ -18,4 +18,10 @@ interface Filter {
 	}
 }
 
+export interface FilterServiceArea {
+	readonly serviceAreaAbbr: string 
+	readonly serviceAreaId: string
+	readonly serviceAreaName: string
+}
+
 export default Filter;

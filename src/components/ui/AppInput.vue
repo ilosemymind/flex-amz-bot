@@ -1,7 +1,7 @@
 <template>
 	<div
 		:class="cn(`
-			relative w-full flex items-center gap-2 px-5 py-2 text-sm bg-white border border-black rounded-xl cursor-text
+			relative w-full flex items-center gap-2 px-5 text-sm bg-white border border-black rounded-xl cursor-text
 			disabled:opacity-50
 		`, $attrs.class as string)" 
 	>

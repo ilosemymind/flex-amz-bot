@@ -1,17 +1,7 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 
-type Profile = {
-	email: string,
-	name: string,
-	telegramId: string,
-	isAmazonConnected: boolean,
-	isBotRunning: 0 | 1,
-	settings: {
-		tapInterval: { from: number, to: number },
-		autoStop: 0 | 1
-	}
-}
+import Profile from '@/types/Profile';
 
 export const useProfileStore = defineStore('profile', () => {
 	const state = ref<Profile>();

@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/vue": "^1.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
+    "@vuelidate/components": "^1.2.6",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.3",
     "@vueuse/core": "^10.2.1",

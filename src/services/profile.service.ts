@@ -2,8 +2,12 @@ import axiosInstance from "@/plugins/axios"
 
 export default {
 	getProfile: async () => {
-		const { data } = await axiosInstance.get(`/user`);
+		try {
+			const { data } = await axiosInstance.get(`/user`);
 
-		return data;
+			return data;
+		} catch(error) {
+			console.log(error);
+		}
 	}
 }

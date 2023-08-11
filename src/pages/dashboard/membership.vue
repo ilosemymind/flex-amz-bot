@@ -8,8 +8,8 @@
 			<p>Time Remaining: 1 day, 12 hours</p>
 		</section>
 
-		<section class="flex gap-4">
-			<Card v-for="_ in 4" class="h-full flex-col">
+		<section class="flex flex-wrap justify-center gap-4 overflow-scroll no-scrollbar">
+			<Card v-for="_ in 4" class="min-w-[128px] max-w-[256px] flex-col justify-start">
 				<strong class="text-2xl">Trial</strong>
 				<strong class="text-center text-sm">
 					0$
@@ -17,7 +17,7 @@
 					2 trial days on us
 				</strong>
 				<Separator class="!h-[6px] rounded-full"/>
-				<ul class="text-sm list-disc ml-4">
+				<ul class="font-light text-md list-disc ml-4">
 					<li>Unlimited search</li>
 					<li>SMS Notifications</li>
 					<li>I've arrived</li>

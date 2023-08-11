@@ -62,36 +62,33 @@ async function onResponseRejected(error: AxiosError) {
 	console.log(statusCode);
 
 	if(originalRequest) {
+		const refreshToken = Cookies.get('refreshToken');
+
 		// @ts-ignore
-		if (statusCode === 401 && !originalRequest._retry) {
+		if (statusCode === 401 && !originalRequest._retry && refreshToken) {
 			// @ts-ignore
 			originalRequest._retry = true;
 			Cookies.remove('accessToken');
 
 			try {
-				const refreshToken = Cookies.get('refreshToken');
+				const response: { accessToken: string } = 
+					await authService.refreshToken({ refreshToken: refreshToken });
 
-				if(refreshToken) {
-					const response: { accessToken: string } = 
-						await authService.refreshToken({ refreshToken: refreshToken });
+				console.log(response, 'refreshed access token response');
 
-					Cookies.set('accessToken', response.accessToken, { 
-						secure: true, 
-						sameSite: 'strict',
-						path: '/',
-						expires: 1 / 96 // 15 min
-					});
-					// @ts-ignore
-					originalRequest.sent = true;
-					originalRequest.headers['Authorization'] = `Bearer ${response.accessToken}`;
-				} else {
-					// window.location.href = "/login";
-				console.log('refresh token not found');
-				}
+				Cookies.set('accessToken', response.accessToken, { 
+					secure: true, 
+					sameSite: 'strict',
+					path: '/',
+					expires: 1 / 96 // 15 min
+				});
+				
+				// @ts-ignore
+				originalRequest.sent = true;
+				originalRequest.headers['Authorization'] = `Bearer ${response.accessToken}`;
 			} catch(error) {
 				Cookies.remove('refreshToken');
-				console.log('error during token refreshing');
-				// window.location.href = "/login";
+				window.location.href = "/login";
 			}
 
 			if (formDataCache) {

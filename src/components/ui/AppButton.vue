@@ -7,7 +7,8 @@
 			variant,
 			size
 		}))" 
-		:type="$attrs.href ? 'text/html' : 'button'"
+		:type="$attrs.href ? 'text/html' : type"
+		:data-active="active"
 	>
 		<slot></slot>
 	</component>
@@ -24,10 +25,11 @@ const element = computed(() => {
 	return attrs.href ? 'a' : 'button';
 });
 
-
 defineProps({
+	type: { type: String as PropType<'button' | 'submit'>, default: 'button' },
 	variant: { type: String as PropType<Variant>, default: 'default' },
-	size: { type: String as PropType<Size>, default: 'md' }
+	size: { type: String as PropType<Size>, default: 'md' },
+	active: { type: Boolean as PropType<boolean>, defaulf: false }
 });
 
 const buttonVariants = cva(
@@ -44,6 +46,10 @@ const buttonVariants = cva(
 					relative p-1 text-lavender-500 bg-transparent text-white
 					before:content-[''] before:absolute before:bottom-[-1px] before:top-[auto] before:left-0 before:right-[100%] before:h-[1px] before:bg-[currentColor] before:transition-color before:duration-150
 					hover:text-pink-400 hover:before:right-0 disabled:text-gray-400
+				`,
+				flat: `
+					flex rounded-3xl border border-input text-white border-white bg-transparent 
+					hover:border-pink-400 hover:text-pink-400 data-[active=true]:border-pink-400 data-[active=true]:text-pink-400
 				`
 			},
 			size: {

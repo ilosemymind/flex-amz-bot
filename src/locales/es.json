@@ -1,0 +1,16 @@
+{
+	"dashboard": {
+		"nav": {
+			"index": "Espaniol",
+			"filters": "Filters",
+			"calendar": "Calendar",
+			"offers": "Offers",
+			"membership": "Membership",
+			"earnings": "Earnings",
+			"referrals": "Referrals",
+			"settings": "Settings",
+			"faq": "F.A.Q.",
+			"help": "Help"
+		}
+	}
+}

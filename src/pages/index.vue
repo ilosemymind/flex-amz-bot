@@ -1,5 +1,5 @@
 <template>
-	<MainLayout class="flex flex-col gap-16">
+	<MainLayout class="relative flex flex-col gap-16">
 		<header>
 			<nav class="flex justify-between text-white">
 				<ul class="flex gap-4">
@@ -15,29 +15,63 @@
 					</li>
 				</ul>
 
-				<button 
-					class="flex flex-col gap-[5px] group transition duration-300"
-					@click="toggleMenuSheet"
-				>
-					<span 
-						class="w-8 h-[5px] bg-white rounded-full transition-[inherit]"
-						:class="{
-							'-rotate-45 translate-y-[10px]': showMenuSheet
-						}"
-					></span>
-					<span 
-						class="w-8 h-[5px] bg-white rounded-full transition-[inherit] group-hover:-translate-x-4"
-						:class="{
-							'group-hover:!-translate-x-12 opacity-0': showMenuSheet
-						}"
-					></span>
-					<span 
-						class="w-8 h-[5px] bg-white rounded-full transition-[inherit]"
-						:class="{
-							'rotate-45 -translate-y-[10px]': showMenuSheet
-						}"
-					></span>
-				</button>
+				<Sheet>
+					<SheetTrigger class="z-50"/>
+
+					<SheetContent class="flex flex-col justify-between px-7 pt-20 pb-5">
+						<LocalizationSelect/>
+
+						<RouterLink v-if="profileStore.state" to="/dashboard">
+							<AppButton
+								class="font-light text-md mt-auto"
+								variant="ghost"
+								size="sm"
+							>
+								Dashboard
+							</AppButton>
+						</RouterLink>
+						
+						<div v-else class="flex flex-col gap-4">
+							<RouterLink to="/login">
+								<AppButton
+									class="font-light text-md mt-auto"
+									variant="ghost"
+									size="sm"
+								>
+									Sign in
+								</AppButton>
+							</RouterLink>
+							<RouterLink to="/signup">
+								<AppButton
+									class="font-light text-md mt-auto"
+									variant="ghost"
+									size="sm"
+								>
+									Sign up
+								</AppButton>
+							</RouterLink>
+						</div>
+
+						<div class="flex flex-col items-center gap-5">
+							<button>
+								<SvgIcon name="facebook"/>
+							</button>
+							
+							<button>
+								<SvgIcon name="send"/>
+							</button>
+						</div>
+
+						<div>
+							<img class="" :src="logoImg" alt="Logo"/>
+							<p class="text-center">
+								2023 All rights reserved ©
+								<br/>
+								Partners
+							</p>
+						</div>
+					</SheetContent>
+				</Sheet>
 			</nav>
 		</header>
 
@@ -93,15 +127,18 @@
 import { onMounted, ref } from 'vue';
 import emblaCarouselVue from 'embla-carousel-vue';
 import bodymovin, { AnimationItem } from 'lottie-web';
+import { useProfileStore } from '@/stores/profile';
+import logoImg from '@/assets/images/logo.png';
 
 import MainLayout from '@/components/layouts/MainLayout.vue';
+import AppButton from '@/components/ui/AppButton.vue';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import SvgIcon from '@/components/ui/SvgIcon.vue';
+import LocalizationSelect from '@/components/LocalizationSelect.vue';
+
+const profileStore = useProfileStore();
 
 const [ emblaNode, emblaApi ] = emblaCarouselVue({ loop: true });
-
-const showMenuSheet = ref(false);
-const toggleMenuSheet = () => {
-	showMenuSheet.value = !showMenuSheet.value;
-}
 
 const animation = ref<AnimationItem>();
 

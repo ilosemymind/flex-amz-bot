@@ -35,17 +35,22 @@ const toggleModelValue = () => {
 	modelValue.value = !modelValue.value;
 }
 
-const props = defineProps({
-	id: { type: String, default: null },
-	name: { type: String, default: null },
-	required: { type: Boolean, default: false },
-	disabled: { type: Boolean, default: false }
+interface SwitchProps {
+	id?: string,
+	name?: string,
+	required?: boolean,
+	disabled?: boolean
+}
+
+const props = withDefaults(defineProps<SwitchProps>(), {
+	required: false,
+	disabled: false
 });
 
 const { disabled } = toRefs(props);
 
-function handleKeydown(e: KeyboardEvent) {
-  if (e.key === "Enter") {
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === "Enter") {
     toggleModelValue();
   }
 }

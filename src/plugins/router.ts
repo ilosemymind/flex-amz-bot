@@ -13,13 +13,19 @@ router.beforeEach(async (from, _, next) => {
 	const isProtectedRoute = (openRoutes.filter(route => 
 		from.path.startsWith(route) || from.path === "/").length === 0);
 
-	const userProfile = await profileService.getProfile();
-	console.log(userProfile, 'userProfile')
+	console.log(isProtectedRoute, 'isProtectedRoute')
 
-	if(userProfile) {
-		profileStore.setValue(userProfile);
-	} else {
-		profileStore.reset();
+	try {
+		const userProfile = await profileService.getProfile();
+		console.log(userProfile, 'userProfile')
+
+		if(userProfile && userProfile.statusCode !== 401) {
+			profileStore.setValue(userProfile);
+		} else {
+			profileStore.reset();
+		}
+	} catch(error) {
+		console.error(error);
 	}
 
 	if(profileStore.state) {

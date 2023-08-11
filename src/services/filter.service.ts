@@ -1,5 +1,7 @@
 import axiosInstance from "@/plugins/axios"
 
+import Filter, { FilterServiceArea } from "@/types/Filter";
+
 export default {
 	getFilters: async () => {
 		const { data } = await axiosInstance.get(`/filters`);
@@ -7,8 +9,8 @@ export default {
 		return data;
 	},
 
-	getFilterServices: async () => {
-		const { data } = await axiosInstance.get(`/services`);
+	getFilterServiceAreas: async () => {
+		const { data }: { data: FilterServiceArea[] } = await axiosInstance.get(`/services`);
 
 		return data;
 	},
@@ -19,21 +21,27 @@ export default {
 		return data;
 	},
 
-	addFilter: async () => {
-		const { data } = await axiosInstance.post(`/filter`);
+	addFilter: async (payload: { filter: Filter }) => {
+		console.log(payload, 'add filter payload');
+
+		const { data } = await axiosInstance.post(`/filter`, payload.filter);
 
 		return data;
 	},
 
-	editFilter: async () => {
-		const { data } = await axiosInstance.put(`/filter`);
+	editFilter: async (payload: { filter: Filter }) => {
+		const { data } = await axiosInstance.put(`/filter`, payload.filter);
 
 		return data;
 	},
 
 	deleteFilter: async (payload: { id: number }) => {
-		const { data } = await axiosInstance.delete(`/filter?id=${payload.id}`);
+		const response = await axiosInstance.delete(`/filter`, { 
+			data: {
+				id: payload.id
+			}
+		});
 
-		return data;
+		return response;
 	}
 }
