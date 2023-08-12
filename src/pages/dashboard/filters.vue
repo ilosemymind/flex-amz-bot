@@ -57,7 +57,11 @@
 								<section class="flex items-center justify-between gap-2">
 									<strong>Auto-Stop After Catch</strong>
 
-									<SwitchRoot v-model="switchModel" @toggle="handleAutoStopToggle">
+									<SwitchRoot 
+										v-if="profileStore.state"
+										v-model="profileStore.state.settings.autoStop" 
+										@toggle="handleAutoStopToggle"
+									>
 										<SwitchThumb/>
 									</SwitchRoot>
 								</section>
@@ -90,7 +94,10 @@
 							Delete
 						</AppButton>
 
-						<SwitchRoot v-model="filterSwitch">
+						<SwitchRoot 
+							v-model="filter.filterValue.isOn"
+							@toggle="handleFilterToggle(filter.id)"
+						>
 							<SwitchThumb/>
 						</SwitchRoot>
 					</Card>
@@ -124,12 +131,8 @@ import {
 import Filter from '@/types/Filter';
 import { Alert } from '@/components/ui/alert';
 
-const switchModel = ref(true);
-
 const filters = ref<Filter[]>([]);
 filters.value = await filterService.getFilters();
-
-const filterSwitch = ref(true);
 
 const MIN_INTERVAL_VALUE = 0.1;
 const MAX_INTERVAL_VALUE = 12;
@@ -137,15 +140,7 @@ const MAX_INTERVAL_VALUE = 12;
 const profileStore = useProfileStore();
 
 const handleAutoStopToggle = async () => {
-	if(profileStore.state) {
-		const flag = profileStore.state.settings.autoStop === 0 ? 1 : 0;
-
-		const response = await botService.toggleAutoStop({ flag });
-
-		if(response.status === 200) {
-			profileStore.state.settings.autoStop = flag;
-		} 
-	}
+	await botService.toggleAutoStop();
 }
 
 const intervalState = reactive({
@@ -173,6 +168,9 @@ const v$ = useVuelidate(inyervalRules, intervalState);
 
 const showIntervalSuccessMessage = ref(false);
 const submitIntervalForm = async () => {
+	if(showIntervalSuccessMessage.value) 
+		showIntervalSuccessMessage.value = false;
+
 	const result = await v$.value.$validate();
 	if (!result) {
 		// notify user form is invalid
@@ -188,6 +186,10 @@ const submitIntervalForm = async () => {
 
 		showIntervalSuccessMessage.value = true;
 	}
+}
+
+const handleFilterToggle = async (id: number) => {
+	await filterService.toggleFilter({ id });
 }
 
 const handleFilterDelete = async (id: number) => {

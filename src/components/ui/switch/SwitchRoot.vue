@@ -54,7 +54,6 @@ const emit = defineEmits([ 'toggle' ]);
 const toggleChecked = () => {
 	toggleModelValue();
 
-	console.log('emitting toggle')
 	emit('toggle');
 };
 

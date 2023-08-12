@@ -3,10 +3,10 @@ interface Profile {
 	name: string,
 	telegramId: string,
 	isAmazonConnected: boolean,
-	isBotRunning: 0 | 1,
+	isBotRunning: boolean,
 	settings: {
 		tapInterval: { from: number, to: number },
-		autoStop: 0 | 1
+		autoStop: boolean
 	}
 }
 

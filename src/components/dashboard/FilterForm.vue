@@ -184,13 +184,13 @@ const props = defineProps({
 			filterName: "",
 			filterValue: {
 				daysAndTime: { 
-					mon: { from: "", to: "" }, 
-					tue: { from: "", to: "" }, 
-					wed: { from: "", to: "" }, 
-					thur: { from: "", to: "" }, 
-					fri: { from: "", to: "" }, 
-					sat: { from: "", to: "" }, 
-					sun: { from: "", to: "" } 
+					mon: { from: undefined, to: undefined }, 
+					tue: { from: undefined, to: undefined }, 
+					wed: { from: undefined, to: undefined }, 
+					thur: { from: undefined, to: undefined }, 
+					fri: { from: undefined, to: undefined }, 
+					sat: { from: undefined, to: undefined }, 
+					sun: { from: undefined, to: undefined } 
 				}, 
 				payPerHour: [{ duration: "00:00", pay: 0 }], 
 				serviceIds: [], 
@@ -257,8 +257,6 @@ const payPerHourRules = {
 const v$ = useVuelidate(filterFormRules, filterFormState);
 
 const submitForm = async () => {
-	console.log('submitting filter form')
-
 	const result = await v$.value.$validate();
 
 	if (!result) {

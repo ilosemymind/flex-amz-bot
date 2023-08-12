@@ -22,7 +22,6 @@ import FilterForm from '@/components/dashboard/FilterForm.vue';
 
 import Filter from '@/types/Filter';
 
-
 const submitFilterAdding = async (formData: Filter) => {
 	console.log(formData, 'form data of filter add')
 

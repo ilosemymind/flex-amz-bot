@@ -11,7 +11,7 @@
 				@click="handleBotToggle"
 			>
 				<img 
-					v-if="profileStore.state?.isBotRunning === 1"
+					v-if="profileStore.state?.isBotRunning"
 					:src="stopImg" 
 					alt="Stop"
 					class="w-[42px] h-[42px]"
@@ -27,7 +27,7 @@
 		</button>
 
 		<b class="cursor-default">
-			{{ profileStore.state?.isBotRunning === 1 ? "Start" : "Stop" }}
+			{{ profileStore.state?.isBotRunning ? "Start" : "Stop" }}
 		</b>
 	</section>
 </template>
@@ -57,7 +57,7 @@ onMounted(() => {
 			path: '/src/assets/animations/geometcism.json'
 		});
 
-		if(profileStore.state?.isBotRunning === 1) {
+		if(profileStore.state?.isBotRunning) {
 			if(animation.value)  animation.value.goToAndPlay(1);
 		}
 	}
@@ -65,26 +65,30 @@ onMounted(() => {
 
 const handleBotToggle = async () => {
 	if(profileStore.state) {
-		if(profileStore.state.isBotRunning === 1) {
+		if(profileStore.state.isBotRunning) {
 			const response = await botService.stopBot();
 
 			if(response.status === 200) {
-				profileStore.state.isBotRunning = 0;
+				profileStore.state.isBotRunning = false;
 			}
+
+			return;
 		} 
 
-		if(profileStore.state.isBotRunning === 0) {
+		if(!profileStore.state.isBotRunning) {
 			const response = await botService.startBot();
 
 			if(response.status === 200) {
-				profileStore.state.isBotRunning = 1;
+				profileStore.state.isBotRunning = true;
 			}
 		}
+
+		return;
 	}
 }
 
 watchEffect(() => {
-	if(profileStore.state && profileStore.state.isBotRunning === 1) {
+	if(profileStore.state?.isBotRunning) {
 		if(animation.value) animation.value.goToAndPlay(1);
 	} else {
 		if(animation.value) animation.value.stop();

@@ -10,10 +10,8 @@ export default {
 		return response;
 	},
 
-	toggleAutoStop: async (payload: { flag: number }) => {
-		const response = await axiosInstance.post(`/auto_stop`, {
-			flag: payload.flag
-		});
+	toggleAutoStop: async () => {
+		const response = await axiosInstance.get(`/auto_stop`);
 
 		return response;
 	},

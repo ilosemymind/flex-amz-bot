@@ -35,6 +35,14 @@ export default {
 		return data;
 	},
 
+	toggleFilter: async (payload: { id: number }) => {
+		const response = await axiosInstance.post(`/toggle_filter`, {
+			id: payload.id
+		});
+
+		return response;
+	},
+
 	deleteFilter: async (payload: { id: number }) => {
 		const response = await axiosInstance.delete(`/filter`, { 
 			data: {
