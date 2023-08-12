@@ -53,7 +53,7 @@ declare module 'vue-router/auto/routes' {
     '/dashboard/offers': RouteRecordInfo<'/dashboard/offers', '/dashboard/offers', Record<never, never>, Record<never, never>>,
     '/dashboard/referrals': RouteRecordInfo<'/dashboard/referrals', '/dashboard/referrals', Record<never, never>, Record<never, never>>,
     '/dashboard/settings': RouteRecordInfo<'/dashboard/settings', '/dashboard/settings', Record<never, never>, Record<never, never>>,
-    '/filter/[:id]/edit': RouteRecordInfo<'/filter/[:id]/edit', '/filter/::id/edit', { :id: ParamValue<true> }, { :id: ParamValue<false> }>,
+    '/filter/[:id]/edit': RouteRecordInfo<'/filter/[:id]/edit', '/filter/::id/edit', { ':id': ParamValue<true> }, { ':id': ParamValue<false> }>,
     '/filter/add': RouteRecordInfo<'/filter/add', '/filter/add', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
     '/signup': RouteRecordInfo<'/signup', '/signup', Record<never, never>, Record<never, never>>,
