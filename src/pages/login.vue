@@ -9,7 +9,10 @@
 		</RouterLink>
 
 		<div class="w-1/3 flex flex-col justify-center gap-5">
-			<form class="w-full flex flex-col items-center gap-2 text-white overflow-scroll no-scrollbar">
+			<form 
+				class="w-full flex flex-col items-center gap-2 text-white overflow-scroll no-scrollbar"
+				@submit.prevent="submitLoginForm"
+			>
 				<div class="w-full flex flex-col gap-3">
 					<label class="w-full text-left" for="email">E-Mail</label>
 					<AppInput v-model="v$.email.$model" id="email" name="email" placeholder="example@mail.com" type="email"/>
@@ -46,7 +49,7 @@
 				<AppButton 
 					class="text-lg my-3" 
 					variant="ghost"
-					@click="submitLogin"
+					type="submit"
 					:disabled="v$.$errors.length"
 				>
 					Login
@@ -94,8 +97,8 @@
 import { reactive, ref } from 'vue';
 import { RouterLink } from 'vue-router/auto';
 import logoImg from "@/assets/images/logo.png";
-import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 import authService from '@/services/auth.service';
 import { router } from '@/plugins/router';
 
@@ -117,7 +120,7 @@ const loginRules = {
 
 const v$ = useVuelidate(loginRules, loginState);
 
-const submitLogin = async () => {
+const submitLoginForm = async () => {
 	const result = await v$.value.$validate();
 	if (!result) {
 		// notify user form is invalid

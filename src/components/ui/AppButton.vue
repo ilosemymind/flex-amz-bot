@@ -32,9 +32,10 @@ defineProps({
 	active: { type: Boolean as PropType<boolean>, defaulf: false }
 });
 
-const buttonVariants = cva(
-	`flex items-center justify-center gap-2 text-sm leading-3 transition duration-200 whitespace-nowrap
-	disabled:cursor-not-allowed`,
+const buttonVariants = cva(`
+		flex items-center justify-center gap-2 text-sm leading-3 transition duration-200 whitespace-nowrap
+		disabled:cursor-not-allowed
+	`,
 	{
 		variants: {
 			variant: {

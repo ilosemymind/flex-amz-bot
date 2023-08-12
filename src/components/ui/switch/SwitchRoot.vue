@@ -20,7 +20,7 @@
 			:disabled="props.disabled"
 			:required="props.required"
 			:data-state="modelValue ? 'checked' : 'unchecked'"
-			@click="toggleModelValue"
+			@click="toggleChecked"
 			@keydown="handleKeydown"
 		/>
 	</div>
@@ -49,15 +49,24 @@ const props = withDefaults(defineProps<SwitchProps>(), {
 
 const { disabled } = toRefs(props);
 
+const emit = defineEmits([ 'toggle' ]);
+
+const toggleChecked = () => {
+	toggleModelValue();
+
+	console.log('emitting toggle')
+	emit('toggle');
+};
+
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === "Enter") {
-    toggleModelValue();
+    toggleChecked();
   }
 }
 
 provide<SwitchProvideValue>(SWITCH_INJECTION_KEY, {
   checked: modelValue,
-  toggleChecked: toggleModelValue,
+  toggleChecked,
   disabled
 });
 </script>

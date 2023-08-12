@@ -8,7 +8,10 @@
 			/>
 		</RouterLink>
 
-		<form class="w-1/3 flex flex-col items-center gap-2 text-white overflow-scroll no-scrollbar">
+		<form 
+			class="w-1/3 flex flex-col items-center gap-2 text-white overflow-scroll no-scrollbar"
+			@submit.prevent="submitSignUpForm"
+		>
 			<div class="w-full flex flex-col gap-3">
 				<label class="w-full text-left" for="full-name">Full name</label>
 				<AppInput v-model="v$.username.$model" id="full-name" placeholder="First and last name"/>
@@ -101,7 +104,7 @@
 			<AppButton 
 				class="text-lg my-3" 
 				variant="ghost"
-				@click="submitSignUp"
+				type="submit"
 				:disabled="v$.$errors.length"
 			>
 				Sign up
@@ -131,8 +134,8 @@
 import { RouterLink } from 'vue-router/auto';
 import { computed, reactive, ref } from 'vue';
 import logoImg from "@/assets/images/logo.png";
-import { useVuelidate } from '@vuelidate/core';
 import { required, email, minLength, sameAs } from '@vuelidate/validators';
+import { useVuelidate } from '@vuelidate/core';
 import { vMaska, MaskaDetail } from "maska";
 import phoneCodes from '@/utils/phone-codes.json';
 import authService from '@/services/auth.service';
@@ -180,7 +183,7 @@ const signUpRules = {
 
 const v$ = useVuelidate(signUpRules, signUpState);
 
-const submitSignUp = async () => {
+const submitSignUpForm = async () => {
 	const result = await v$.value.$validate();
 	if (!result) {
 		// notify user form is invalid

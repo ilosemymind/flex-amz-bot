@@ -38,6 +38,7 @@ import bodymovin, { AnimationItem } from 'lottie-web';
 import playImg from '@/assets/images/play.png';
 import stopImg from '@/assets/images/stop.png';
 import { useProfileStore } from '@/stores/profile';
+import botService from '@/services/bot.service';
 
 const profileStore = useProfileStore();
 
@@ -62,8 +63,24 @@ onMounted(() => {
 	}
 });
 
-const handleBotToggle = () => {
+const handleBotToggle = async () => {
+	if(profileStore.state) {
+		if(profileStore.state.isBotRunning === 1) {
+			const response = await botService.stopBot();
 
+			if(response.status === 200) {
+				profileStore.state.isBotRunning = 0;
+			}
+		} 
+
+		if(profileStore.state.isBotRunning === 0) {
+			const response = await botService.startBot();
+
+			if(response.status === 200) {
+				profileStore.state.isBotRunning = 1;
+			}
+		}
+	}
 }
 
 watchEffect(() => {

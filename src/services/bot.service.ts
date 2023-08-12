@@ -1,15 +1,32 @@
 import axiosInstance from "@/plugins/axios"
 
 export default {
-	startBot: async () => {
-		const { data } = await axiosInstance.get(`/user`);
+	setInterval: async (payload: { from: number, to: number }) => {
+		const response = await axiosInstance.post(`/tap_interval`, {
+			fromInterval: payload.from,
+			toInterval: payload.to
+		});
 
-		return data;
+		return response;
+	},
+
+	toggleAutoStop: async (payload: { flag: number }) => {
+		const response = await axiosInstance.post(`/auto_stop`, {
+			flag: payload.flag
+		});
+
+		return response;
+	},
+
+	startBot: async () => {
+		const response = await axiosInstance.get(`/start_bot`);
+
+		return response;
 	},
 
 	stopBot: async () => {
-		const { data } = await axiosInstance.get(`/user`);
+		const response = await axiosInstance.get(`/stop_bot`);
 
-		return data;
+		return response;
 	}
 }
