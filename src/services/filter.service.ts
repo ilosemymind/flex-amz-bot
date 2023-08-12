@@ -6,7 +6,7 @@ export default {
 	getFilters: async () => {
 		const { data } = await axiosInstance.get(`/filters`);
 
-		return data;
+		return data as Filter[];
 	},
 
 	getFilterServiceAreas: async () => {

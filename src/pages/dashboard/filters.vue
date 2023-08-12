@@ -90,7 +90,7 @@
 							Delete
 						</AppButton>
 
-						<SwitchRoot v-model="filter.filterValue.isOn">
+						<SwitchRoot v-model="filterSwitch">
 							<SwitchThumb/>
 						</SwitchRoot>
 					</Card>
@@ -128,6 +128,8 @@ const switchModel = ref(true);
 
 const filters = ref<Filter[]>([]);
 filters.value = await filterService.getFilters();
+
+const filterSwitch = ref(true);
 
 const MIN_INTERVAL_VALUE = 0.1;
 const MAX_INTERVAL_VALUE = 12;
