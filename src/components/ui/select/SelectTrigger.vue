@@ -1,9 +1,12 @@
 <template>
 	<button
-		ref="selectTriggerRef"
+		v-bind="excludeAttrs($attrs, ['class', 'type', 'role'])"
+		:class="cn(``, $attrs.class as string)"
+		type="button"
 		:aria-expanded="injectedValue?.isOpen.value || false"
 		:data-state="injectedValue?.isOpen.value ? 'open' : 'closed'"
 		style="position: relative;"
+		ref="selectTriggerRef"
 		@click="handleClick"
 		@keydown.prevent="handleKeydown"
 	>
@@ -14,6 +17,7 @@
 <script setup lang="ts">
 import { inject, onMounted, ref } from "vue";
 import { SELECT_INJECTION_KEY, type SelectProvideValue } from "./Select.vue";
+import { cn, excludeAttrs } from "@/components/utils";
 
 const injectedValue = inject<SelectProvideValue>(SELECT_INJECTION_KEY);
 
@@ -31,7 +35,6 @@ async function handleClick() {
 			injectedValue.showOptions();
 		}
 	}
-  // await nextTick();
 }
 
 function handleKeydown(event: KeyboardEvent) {
@@ -43,5 +46,11 @@ function handleKeydown(event: KeyboardEvent) {
   ) {
     handleClick();
   }
+}
+</script>
+
+<script lang="ts">
+export default {
+	inheritAttrs: false
 }
 </script>

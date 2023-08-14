@@ -1,7 +1,8 @@
 <template>
 	<button
-		v-bind="excludeAttrs($attrs, ['class', 'role'])"
+		v-bind="excludeAttrs($attrs, ['class', 'type', 'role'])"
 		:class="cn(``, $attrs.class as string)"
+		type="button"
 		role="option"
 		@click="handleClick"
 	>

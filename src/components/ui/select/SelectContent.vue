@@ -1,11 +1,11 @@
 <template>
 	<div 
-		ref="selectContentRef"
 		v-show="injectedValue?.isOpen.value"
 		v-bind="excludeAttrs($attrs, ['class', 'role', 'style'])"
 		:class="cn(``, $attrs.class as string)"
 		style="position: absolute;"
 		role="listbox"
+		ref="selectContentRef"
 	>
 		<slot></slot>
 	</div>
